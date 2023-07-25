@@ -26,3 +26,9 @@
 - https://github.com/kristerkari/react-native-svg-transformer
 - npm i react-native-svg-transformer --save-dev
 - criar arquivo: metro.config.js
+
+## ROTAS DE NAVEGAÇÃO
+
+- npm install @react-navigation/native
+- npx expo install react-native-screens react-native-safe-area-context
+- npm install @react-navigation/native-stack

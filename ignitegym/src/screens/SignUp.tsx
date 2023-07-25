@@ -1,19 +1,17 @@
 import { useNavigation } from "@react-navigation/native";
 import { VStack, Image, Text, Center, Heading, ScrollView } from "native-base";
 
-import { AuthNavigatorRoutesProps } from "@routes/auth.routes";
-
 import BackgroundImg from "@assets/background.png";
 import LogoSvg from "@assets/logo.svg";
 
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 
-export function SignIn() {
-  const navigation = useNavigation<AuthNavigatorRoutesProps>();
+export function SignUp() {
+  const navigation = useNavigation();
 
-  function handleNewAccount() {
-    navigation.navigate("signUp");
+  function handleGoBack() {
+    navigation.goBack();
   }
 
   return (
@@ -39,26 +37,26 @@ export function SignIn() {
 
         <Center flex={1}>
           <Heading color="gray.100" fontSize="xl" mb={6} fontFamily="heading">
-            Acesse sua conta
+            Crie sua conta
           </Heading>
 
-          <Input placeholder="E-mail" keyboardType="email-address" />
+          <Input placeholder="Nome" />
+          <Input
+            placeholder="E-mail"
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
           <Input placeholder="Senha" secureTextEntry />
 
-          <Button title="Acessar" />
+          <Button title="Criar e acessar" />
         </Center>
 
-        <Center mt={8}>
-          <Text color="gray.100" fontSize="sm" mb={3} fontFamily="body">
-            Ainda não tem acesso?
-          </Text>
-
-          <Button
-            title="Criar conta"
-            variant="outline"
-            onPress={handleNewAccount}
-          />
-        </Center>
+        <Button
+          mt={8}
+          title="Voltar para o login"
+          variant="outline"
+          onPress={handleGoBack}
+        />
       </VStack>
     </ScrollView>
   );
