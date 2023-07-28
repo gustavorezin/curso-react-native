@@ -32,3 +32,10 @@
 - npm install @react-navigation/native
 - npx expo install react-native-screens react-native-safe-area-context
 - npm install @react-navigation/native-stack
+
+- npm i @react-navigation/bottom-tabs
+
+## GALERIA DE IMAGENS
+
+- npx expo install expo-image-picker
+- adicionar plugin no app.json
