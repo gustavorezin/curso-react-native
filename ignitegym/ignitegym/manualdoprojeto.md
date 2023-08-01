@@ -45,3 +45,12 @@
 - https://www.react-hook-form.com/
 - npm install react-hook-form
 - npm install @hookform/resolvers yup
+
+## AXIOS (cliente http)
+
+- https://axios-http.com/ptbr/docs/intro
+- npm install axios
+
+## ASYNC STORAGE
+
+- npx expo install @react-native-async-storage/async-storage
