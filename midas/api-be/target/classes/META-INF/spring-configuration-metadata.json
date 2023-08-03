@@ -1,0 +1,57 @@
+{
+  "groups": [
+    {
+      "name": "multitenancy.mtapp.master.datasource",
+      "type": "com.midas.api.mt.config.MasterDatabaseConfigProperties",
+      "sourceType": "com.midas.api.mt.config.MasterDatabaseConfigProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "multitenancy.mtapp.master.datasource.connection-timeout",
+      "type": "java.lang.Long",
+      "sourceType": "com.midas.api.mt.config.MasterDatabaseConfigProperties"
+    },
+    {
+      "name": "multitenancy.mtapp.master.datasource.driver-class-name",
+      "type": "java.lang.String",
+      "sourceType": "com.midas.api.mt.config.MasterDatabaseConfigProperties"
+    },
+    {
+      "name": "multitenancy.mtapp.master.datasource.idle-timeout",
+      "type": "java.lang.Long",
+      "sourceType": "com.midas.api.mt.config.MasterDatabaseConfigProperties"
+    },
+    {
+      "name": "multitenancy.mtapp.master.datasource.max-pool-size",
+      "type": "java.lang.Integer",
+      "sourceType": "com.midas.api.mt.config.MasterDatabaseConfigProperties"
+    },
+    {
+      "name": "multitenancy.mtapp.master.datasource.min-idle",
+      "type": "java.lang.Integer",
+      "sourceType": "com.midas.api.mt.config.MasterDatabaseConfigProperties"
+    },
+    {
+      "name": "multitenancy.mtapp.master.datasource.password",
+      "type": "java.lang.String",
+      "sourceType": "com.midas.api.mt.config.MasterDatabaseConfigProperties"
+    },
+    {
+      "name": "multitenancy.mtapp.master.datasource.pool-name",
+      "type": "java.lang.String",
+      "sourceType": "com.midas.api.mt.config.MasterDatabaseConfigProperties"
+    },
+    {
+      "name": "multitenancy.mtapp.master.datasource.url",
+      "type": "java.lang.String",
+      "sourceType": "com.midas.api.mt.config.MasterDatabaseConfigProperties"
+    },
+    {
+      "name": "multitenancy.mtapp.master.datasource.username",
+      "type": "java.lang.String",
+      "sourceType": "com.midas.api.mt.config.MasterDatabaseConfigProperties"
+    }
+  ],
+  "hints": []
+}
