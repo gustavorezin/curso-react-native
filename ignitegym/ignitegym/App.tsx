@@ -14,7 +14,7 @@ import { THEME } from "./src/theme";
 import { AuthContextProvider } from "@contexts/AuthContext";
 
 export default function App() {
-  const [fonstLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
+  const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold });
 
   return (
     <NativeBaseProvider theme={THEME}>
@@ -24,7 +24,7 @@ export default function App() {
         translucent
       />
       <AuthContextProvider>
-        {fonstLoaded ? <Routes /> : <Loading />}
+        {fontsLoaded ? <Routes /> : <Loading />}
       </AuthContextProvider>
     </NativeBaseProvider>
   );
