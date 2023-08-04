@@ -1,4 +1,4 @@
-export class ClienteDTO {
-  username!: String;
-  password!: String;
-}
+export type ClienteDTO = {
+  username: String;
+  password: String;
+};

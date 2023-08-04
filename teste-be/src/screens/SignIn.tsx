@@ -9,7 +9,7 @@ export function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const clientedto: ClienteDTO = new ClienteDTO();
+  const clientedto: ClienteDTO = {} as ClienteDTO;
 
   async function signIn() {
     try {
