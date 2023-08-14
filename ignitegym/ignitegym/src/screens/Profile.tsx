@@ -35,9 +35,15 @@ type FormDataProps = {
 
 const profileSchema = yup.object({
   name: yup.string().required("Informe o nome"),
-  password: yup.string(),
+  password: yup
+    .string()
+    .min(6)
+    .nullable()
+    .transform((value) => (!!value ? value : null)),
   confirm_password: yup
     .string()
+    .nullable()
+    .transform((value) => (!!value ? value : null))
     .oneOf([yup.ref("password")], "As senhas devem coincidir"),
 });
 
@@ -182,6 +188,7 @@ export function Profile() {
                 placeholder="Senha antiga"
                 secureTextEntry
                 onChangeText={onChange}
+                errorMessage={errors.name?.message}
               />
             )}
           />
