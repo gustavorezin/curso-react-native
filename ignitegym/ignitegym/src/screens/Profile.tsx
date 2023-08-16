@@ -22,6 +22,8 @@ import { UserPhoto } from "@components/UserPhoto";
 import { Input } from "@components/Input";
 import { Button } from "@components/Button";
 import { useAuth } from "@hooks/useAuth";
+import { api } from "@services/api";
+import { AppError } from "@utils/AppError";
 
 const PHOTO_SIZE = 33;
 
@@ -44,10 +46,15 @@ const profileSchema = yup.object({
     .string()
     .nullable()
     .transform((value) => (!!value ? value : null))
-    .oneOf([yup.ref("password")], "As senhas devem coincidir"),
+    .oneOf([yup.ref("password")], "As senhas devem coincidir")
+    .when('password', {
+      is: (Field: any) => Field,
+      then: (schema) => schema.nullable().required('Informe a confirmação de senha').transform((value) => (!!value ? value : null))
+    })
 });
 
 export function Profile() {
+  const [isLoading, setIsLoading] = useState(false)
   const [photoIsLoading, setPhotoIsLoading] = useState(false);
 
   const [userPhoto, setUserPhoto] = useState(
@@ -55,7 +62,7 @@ export function Profile() {
   );
 
   const toast = useToast();
-  const { user } = useAuth();
+  const { user, updateUserProfile } = useAuth();
   const {
     control,
     handleSubmit,
@@ -96,6 +103,14 @@ export function Profile() {
           });
         }
 
+        const fileExtension = photoSelectedUri.split('.').pop();
+
+        const photoFile = {
+          name: `${user.name}.${fileExtension}`.toLowerCase(),
+          uri: photoSelectedUri,
+          type: `image/${fileExtension}`
+        }
+        // falta terminar
         setUserPhoto(photoSelectedUri);
       }
     } catch (error) {
@@ -106,7 +121,32 @@ export function Profile() {
   }
 
   async function handleProfileUpdate(data: FormDataProps) {
-    console.log(data);
+    try {
+      setIsLoading(true)
+
+      const userUpdate = user;
+      userUpdate.name = data.name
+
+      await api.put('/users', data)
+      await updateUserProfile(userUpdate)
+
+      toast.show({
+        title: 'Perfil atualizado com sucesso!',
+        placement:'top',
+        bgColor: 'green.500'
+
+      })
+    } catch (error) {
+      const isAppError = error instanceof AppError;
+      const title = isAppError ? error.message : 'Não foi possível atualizar o perfil.'
+      toast.show({
+        title,
+        placement:'top',
+        bgColor: 'red.500'
+      })
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -222,6 +262,7 @@ export function Profile() {
             title="Atualizar"
             mt={4}
             onPress={handleSubmit(handleProfileUpdate)}
+            isLoading={isLoading}
           />
         </Center>
       </ScrollView>
